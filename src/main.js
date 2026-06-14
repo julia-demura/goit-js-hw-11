@@ -8,12 +8,14 @@ const galleryForm = document.querySelector('.form');
 
 galleryForm.addEventListener('submit', (evt) => {
     evt.preventDefault();
-    const searchQuery = event.currentTarget.elements['search-text'].value.trim();
-    // if (searchQuery === "") {
-    //     iziToast.warning({ message: "Please enter a search term!" });
-    //     return;
-    // }
+    const searchQuery = evt.currentTarget.elements['search-text'].value.trim();
+    if (searchQuery === "") {
+        iziToast.warning({ message: "Please enter a search term!", position: "topRight" });
+        return;
+    }
     clearGallery();
+
+    showLoader();
 
     getImagesByQuery(searchQuery)
         .then((data) => {
@@ -30,6 +32,11 @@ galleryForm.addEventListener('submit', (evt) => {
         })
         .catch((error) => {
             console.log(error);
+            iziToast.error({
+                title: "Error",
+                message: "Something went wrong with the server connection. Please try again later!",
+                position: "topRight",
+            });
         })
         .finally(() => {
             hideLoader();

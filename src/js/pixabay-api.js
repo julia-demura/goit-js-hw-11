@@ -14,5 +14,6 @@ export async function getImagesByQuery(query) {
         return response.data; 
     } catch (error) {
         console.error("Error fetching images:", error);
+        throw error;
     }
 }
