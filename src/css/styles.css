@@ -8,17 +8,40 @@
 @import url('./reset.css');
 @import url('./base.css');
 @import url('./container.css');
-@import url('./animations.css');
-
-/* Sections style */
-@import url('./header.css');
-@import url('./vite-promo.css');
-@import url('./badges.css');
-@import url('./back-link.css');
-@import url('./footer.css');
 
 * {
   box-sizing: border-box;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.is-hidden {
+  display: none;
+}
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 36px;
+  margin-bottom: 32px;
 }
 .gallery {
   display: flex;
@@ -28,54 +51,28 @@
 .gallery-item {
   width: calc((100% - 2 * 24px) / 3);
 }
-
-.feedback-form {
-  display: flex;
-  flex-direction: column;
-}
-label {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  color: #2e2f42;
-  gap: 8px;
-}
-label:first-child {
-  margin-bottom: 8px;
-}
-.input-form {
+input {
   border: 1px solid #808080;
   border-radius: 4px;
-  width: 360px;
+  width: 272px;
   height: 40px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.04em;
   color: #2e2f42;
+  padding: 8px 16px;
+  margin-right: 8px;
 }
-
-.input-text {
-  border: 1px solid #808080;
-  border-radius: 4px;
-  width: 360px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  color: #2e2f42;
-  resize: none;
-}
-.input-form:hover,
-.input-text:hover {
+input:hover {
   border-color: #000;
 }
-.btn-form {
-  display: flex;
+input:focus {
+  border-color: #4e75ff;
+  outline: none;
+}
+button {
+  display: inline-flex;
   justify-content: center;
   padding: 8px 16px;
   border: none;
@@ -87,9 +84,8 @@ label:first-child {
   letter-spacing: 0.04em;
   color: #fff;
   width: 86px;
-  margin-top: 16px;
 }
-.btn-form:hover,
-.btn-form:focus {
+button:hover,
+button:focus {
   background-color: #6c8cff;
 }
